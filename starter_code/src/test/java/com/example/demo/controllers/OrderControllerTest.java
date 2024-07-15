@@ -1,33 +1,28 @@
 package com.example.demo.controllers;
 
 import com.example.demo.model.persistence.Cart;
-import com.example.demo.model.persistence.Item;
 import com.example.demo.model.persistence.User;
 import com.example.demo.model.persistence.UserOrder;
 import com.example.demo.model.persistence.repositories.OrderRepository;
 import com.example.demo.model.persistence.repositories.UserRepository;
-import org.junit.Assert;
-import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.mockito.MockitoAnnotations;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest
-public class OrderControllerTest {
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.*;
 
-    @InjectMocks
-    private OrderController orderController;
+public class OrderControllerTest {
 
     @Mock
     private UserRepository userRepository;
@@ -35,138 +30,80 @@ public class OrderControllerTest {
     @Mock
     private OrderRepository orderRepository;
 
+    @InjectMocks
+    private OrderController orderController;
+
     @BeforeEach
-    void init() {
-        orderController = new OrderController(userRepository, orderRepository);
+    public void setup() {
+        MockitoAnnotations.initMocks(this);
     }
 
     @Test
-    @DisplayName("submit")
-    public void submit() throws Exception {
-        try {
-            // SETUP INPUT
-            User user = new User();
-            user.setId(1L);
-            user.setUsername("NguyenT4");
-            user.setPassword("Nguyen@123");
+    public void testSubmitOrder_success() {
+        User user = new User();
+        user.setUsername("testUser");
 
-            Cart cart = new Cart();
-            cart.setId(1L);
-            cart.setUser(user);
-            List<Item> items = new ArrayList<>();
-            Item item = new Item();
-            item.setId(1L);
-            item.setName("Iphone 14 Pro Max");
-            item.setDescription("Takes very nice pictures");
-            item.setPrice(new BigDecimal("2000"));
-            items.add(item);
-            cart.setItems(items);
-            cart.setTotal(new BigDecimal("1"));
-            user.setCart(cart);
+        Cart cart = new Cart();
+        cart.setItems(Arrays.asList());
+        user.setCart(cart);
+        when(userRepository.findByUsername("superman")).thenReturn(user);
 
-            // MOCK UserRepository
-            Mockito.doReturn(user).when(userRepository).findByUsername(Mockito.anyString());
-            // EXECUTE METHOD
-            ResponseEntity<UserOrder> responseActual = orderController.submit(user.getUsername());
+        ResponseEntity<UserOrder> response = orderController.submit("superman");
 
-            // COMPARE OUTPUT
-            Assert.assertNotNull(responseActual);
-            Assert.assertEquals(200, responseActual.getStatusCodeValue());
-            Assert.assertNotNull(responseActual.getBody());
-            Assert.assertEquals(BigDecimal.valueOf(1), responseActual.getBody().getTotal());
-            Assert.assertEquals(user, responseActual.getBody().getUser());
-            for(int i = 1; i < responseActual.getBody().getItems().size(); i++){
-                Assert.assertEquals(items.get(i), responseActual.getBody().getItems().get(i));
-            }
-        } catch (Exception ex) {
-            throw ex;
-        }
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        verify(orderRepository, times(1)).save(any(UserOrder.class));
+        verify(userRepository, times(1)).findByUsername("superman");
+        verifyNoMoreInteractions(orderRepository);
+        verifyNoMoreInteractions(userRepository);
     }
 
     @Test
-    @DisplayName("submitNotFound")
-    public void submitNotFound() throws Exception {
-        try {
+    public void testSubmitOrder_userNotFound() {
+        String username = "user_not_found";
+        when(userRepository.findByUsername(username)).thenReturn(null);
 
-            Mockito.doReturn(null).when(userRepository).findByUsername(Mockito.anyString());
-            // EXECUTE METHOD
-            ResponseEntity<UserOrder> responseActual = orderController.submit("NguyenT4");
+        ResponseEntity<UserOrder> response = orderController.submit(username);
 
-            // COMPARE OUTPUT
-            Assert.assertNotNull(responseActual);
-            Assert.assertEquals(404, responseActual.getStatusCodeValue());
-            Assert.assertNull(responseActual.getBody());
-
-        } catch (Exception ex) {
-            throw ex;
-        }
+        assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
+        verify(userRepository, times(1)).findByUsername(username);
+        verifyNoMoreInteractions(orderRepository);
+        verifyNoMoreInteractions(userRepository);
     }
 
     @Test
-    @DisplayName("getOrdersForUser")
-    public void getOrdersForUser() throws Exception {
-        try {
-            // SETUP INPUT
-            User user = new User();
-            user.setId(1L);
-            user.setUsername("NguyenT4");
-            user.setPassword("Nguyen@123");
+    public void testGetOrdersForUser_success() {
+        String username = "testUser";
+        User user = new User();
+        user.setUsername(username);
+        user.setCart(new Cart());
+        List<UserOrder> orders = new ArrayList<>();
+        UserOrder userOrder = new UserOrder();
+        userOrder.setItems(user.getCart().getItems());
+        userOrder.setTotal(new BigDecimal("10.0"));
+        orders.add(userOrder);
+        when(userRepository.findByUsername(username)).thenReturn(user);
+        when(orderRepository.findByUser(user)).thenReturn(orders);
 
-            Cart cart = new Cart();
-            cart.setId(1L);
-            cart.setUser(user);
-            List<Item> items = new ArrayList<>();
-            Item item = new Item();
-            item.setId(1L);
-            item.setName("Iphone 14 Pro Max");
-            item.setDescription("Takes very nice pictures");
-            item.setPrice(new BigDecimal("2000"));
-            items.add(item);
-            cart.setItems(items);
-            cart.setTotal(new BigDecimal("1"));
-            user.setCart(cart);
+        ResponseEntity<List<UserOrder>> response = orderController.getOrdersForUser(username);
 
-            List<UserOrder> userOrders = new ArrayList<>();
-            UserOrder userOrder = new UserOrder();
-            userOrder.setId(1L);
-            userOrder.setUser(user);
-            userOrder.setItems(items);
-            userOrder.setTotal(new BigDecimal("33"));
-            userOrders.add(userOrder);
-
-            // MOCK UserRepository
-            Mockito.doReturn(user).when(userRepository).findByUsername(Mockito.anyString());
-            // MOCK OrderRepository
-            Mockito.doReturn(userOrders).when(orderRepository).findByUser(Mockito.any());
-            // EXECUTE METHOD
-            ResponseEntity<List<UserOrder>> responseActual = orderController.getOrdersForUser(user.getUsername());
-
-            // COMPARE OUTPUT
-            Assert.assertNotNull(responseActual);
-            Assert.assertEquals(200, responseActual.getStatusCodeValue());
-            Assert.assertNotNull(responseActual.getBody());
-            Assert.assertEquals(1,responseActual.getBody().size());
-        } catch (Exception ex) {
-            throw ex;
-        }
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals(orders.size(), response.getBody().size());
+        verify(userRepository, times(1)).findByUsername(username);
+        verify(orderRepository, times(1)).findByUser(user);
+        verifyNoMoreInteractions(orderRepository);
+        verifyNoMoreInteractions(userRepository);
     }
 
     @Test
-    @DisplayName("getOrdersForUserNotFound")
-    public void getOrdersForUserNotFound() throws Exception {
-        try {
-            // MOCK UserRepository
-            Mockito.doReturn(null).when(userRepository).findByUsername(Mockito.anyString());
+    public void testGetOrdersForUser_userNotFound() {
+        String username = "userNotFound";
+        when(userRepository.findByUsername(username)).thenReturn(null);
 
-            // EXECUTE METHOD
-            ResponseEntity<List<UserOrder>> responseActual = orderController.getOrdersForUser("NguyenT4");
+        ResponseEntity<List<UserOrder>> response = orderController.getOrdersForUser(username);
 
-            // COMPARE OUTPUT
-            Assert.assertNotNull(responseActual);
-            Assert.assertEquals(404, responseActual.getStatusCodeValue());
-            Assert.assertNull(responseActual.getBody());
-        } catch (Exception ex) {
-            throw ex;
-        }
+        assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
+        verify(userRepository, times(1)).findByUsername(username);
+        verifyNoMoreInteractions(orderRepository);
+        verifyNoMoreInteractions(userRepository);
     }
 }

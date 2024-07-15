@@ -1,68 +1,71 @@
 package com.example.demo.controllers;
 
+import java.util.Optional;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
 import com.example.demo.model.persistence.Cart;
 import com.example.demo.model.persistence.User;
 import com.example.demo.model.persistence.repositories.CartRepository;
 import com.example.demo.model.persistence.repositories.UserRepository;
 import com.example.demo.model.requests.CreateUserRequest;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.springframework.http.ResponseEntity;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.web.bind.annotation.*;
-
-import java.text.MessageFormat;
 
 @RestController
 @RequestMapping("/api/user")
 public class UserController {
 
-	private static final Logger logger = LogManager.getLogger(UserController.class);
+	private static final Logger log = LoggerFactory.getLogger(UserController.class);
 
+	@Autowired
 	private UserRepository userRepository;
 	
+	@Autowired
 	private CartRepository cartRepository;
 
+	@Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
-
-	public UserController(UserRepository userRepository, CartRepository cartRepository,
-						  BCryptPasswordEncoder bCryptPasswordEncoder) {
-		logger.debug("UserController Injection.");
-		this.userRepository = userRepository;
-		this.cartRepository = cartRepository;
-		this.bCryptPasswordEncoder = bCryptPasswordEncoder;
-	}
 
 	@GetMapping("/id/{id}")
 	public ResponseEntity<User> findById(@PathVariable Long id) {
-		logger.info("Find By Id Start with id: " +id);
+		log.info("Request find user by id with " + id);
 		return ResponseEntity.of(userRepository.findById(id));
 	}
 	
 	@GetMapping("/{username}")
 	public ResponseEntity<User> findByUserName(@PathVariable String username) {
-		logger.info("Find By User Name Start with username: " +username);
+		log.info("Request find user by username with " + username);
 		User user = userRepository.findByUsername(username);
 		return user == null ? ResponseEntity.notFound().build() : ResponseEntity.ok(user);
 	}
 	
 	@PostMapping("/create")
 	public ResponseEntity<User> createUser(@RequestBody CreateUserRequest createUserRequest) {
-		logger.info("Create User Start.");
+		log.info("Request create user start.");
 		User user = new User();
 		user.setUsername(createUserRequest.getUsername());
 		Cart cart = new Cart();
 		cartRepository.save(cart);
 		user.setCart(cart);
-		if(createUserRequest.getPassword().length()<7 ||
-				!createUserRequest.getPassword().equals(createUserRequest.getConfirmPassword())){
-			logger.error(MessageFormat.format("Error - Either length is less than 7 or pass and conf pass do not match. Unable to create {0}"
-					,createUserRequest.getUsername()));
+		if (createUserRequest.getPassword().length() < 7 ||
+				!createUserRequest.getPassword().equals(createUserRequest.getConfirmPassword())) {
+			log.error("Error with user password. Cannot create user {}", createUserRequest.getUsername());
 			return ResponseEntity.badRequest().build();
 		}
 		user.setPassword(bCryptPasswordEncoder.encode(createUserRequest.getPassword()));
 		userRepository.save(user);
-		logger.info("Create User End.");
+		log.info("Request create user end.");
 		return ResponseEntity.ok(user);
 	}
+	
 }

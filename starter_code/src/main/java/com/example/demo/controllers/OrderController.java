@@ -2,8 +2,8 @@ package com.example.demo.controllers;
 
 import java.util.List;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,42 +22,38 @@ import com.example.demo.model.persistence.repositories.UserRepository;
 @RestController
 @RequestMapping("/api/order")
 public class OrderController {
-
-	private static final Logger logger = LogManager.getLogger(OrderController.class);
-
+	private static final Logger log = LoggerFactory.getLogger(UserController.class);
+	
+	@Autowired
 	private UserRepository userRepository;
 	
+	@Autowired
 	private OrderRepository orderRepository;
-
-	public OrderController(UserRepository userRepository, OrderRepository orderRepository) {
-		logger.debug("OrderController Injection.");
-		this.userRepository = userRepository;
-		this.orderRepository = orderRepository;
-	}
-
+	
+	
 	@PostMapping("/submit/{username}")
 	public ResponseEntity<UserOrder> submit(@PathVariable String username) {
-		logger.info("Submit Start: "+username);
+		log.info("Request create order for {} start.", username);
 		User user = userRepository.findByUsername(username);
 		if(user == null) {
-			logger.error("User Not Found With UserName: " +username);
+			log.error("User not found with username is: " + username);
 			return ResponseEntity.notFound().build();
 		}
 		UserOrder order = UserOrder.createFromCart(user.getCart());
 		orderRepository.save(order);
-		logger.info("Submit End: "+username);
+		log.info("Request create order for {} end.", username);
 		return ResponseEntity.ok(order);
 	}
 	
 	@GetMapping("/history/{username}")
 	public ResponseEntity<List<UserOrder>> getOrdersForUser(@PathVariable String username) {
-		logger.info("Get Orders For User Start: " +username);
+		log.info("Request get history order for {0} start." + username);
 		User user = userRepository.findByUsername(username);
 		if(user == null) {
-			logger.error("User Not Found With UserName: " +username);
+			log.error("User not found with username is: " + username);
 			return ResponseEntity.notFound().build();
 		}
-		logger.info("Get Orders For User End: " +username);
+		log.info("Request get history order for {0} end." + username);
 		return ResponseEntity.ok(orderRepository.findByUser(user));
 	}
 }

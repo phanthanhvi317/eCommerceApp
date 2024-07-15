@@ -1,0 +1,119 @@
+2024-07-14 22:45:04,872 INFO c.e.d.SareetaApplication [main] Starting SareetaApplication on DESKTOP-FT1E413 with PID 496 (E:\udacity_java\nd035-c4-Security-and-DevOps\starter_code\target\classes started by Admin in E:\udacity_java\nd035-c4-Security-and-DevOps\starter_code)
+2024-07-14 22:45:04,884 DEBUG c.e.d.SareetaApplication [main] Running with Spring Boot v2.3.2.RELEASE, Spring v5.2.8.RELEASE
+2024-07-14 22:45:04,885 INFO c.e.d.SareetaApplication [main] No active profile set, falling back to default profiles: default
+2024-07-14 22:45:11,044 DEBUG c.e.d.s.JWTAuthenticationVerificationFilter [main] Filter 'JWTAuthenticationVerificationFilter' configured for use
+2024-07-14 22:45:11,968 INFO c.e.d.SareetaApplication [main] Started SareetaApplication in 7.766 seconds (JVM running for 9.377)
+2024-07-14 22:46:16,841 DEBUG c.e.d.s.JWTAuthenticationFilter [http-nio-8082-exec-1] Request is to process authentication
+2024-07-14 22:46:26,149 INFO c.e.d.c.UserController [http-nio-8082-exec-4] Request create user start.
+2024-07-14 22:46:26,301 INFO c.e.d.c.UserController [http-nio-8082-exec-4] Request create user end.
+2024-07-14 22:46:40,003 DEBUG c.e.d.s.JWTAuthenticationFilter [http-nio-8082-exec-6] Request is to process authentication
+2024-07-14 22:47:11,491 INFO c.e.d.c.UserController [http-nio-8082-exec-5] Request add to cart for {0} with {1} start.
+2024-07-14 22:47:11,492 ERROR c.e.d.c.UserController [http-nio-8082-exec-5] User not found with username is: test1
+2024-07-14 22:47:24,078 INFO c.e.d.c.UserController [http-nio-8082-exec-7] Request add to cart for {0} with {1} start.
+2024-07-14 22:47:24,114 INFO c.e.d.c.UserController [http-nio-8082-exec-7] Request add to cart for {0} with {1} end.
+2024-07-14 22:47:30,967 INFO c.e.d.c.UserController [http-nio-8082-exec-8] Request add to cart for {0} with {1} start.
+2024-07-14 22:47:30,972 INFO c.e.d.c.UserController [http-nio-8082-exec-8] Request add to cart for {0} with {1} end.
+2024-07-14 22:49:04,883 INFO c.e.d.SareetaApplication [main] Starting SareetaApplication on DESKTOP-FT1E413 with PID 18988 (E:\udacity_java\nd035-c4-Security-and-DevOps\starter_code\target\classes started by Admin in E:\udacity_java\nd035-c4-Security-and-DevOps\starter_code)
+2024-07-14 22:49:04,897 DEBUG c.e.d.SareetaApplication [main] Running with Spring Boot v2.3.2.RELEASE, Spring v5.2.8.RELEASE
+2024-07-14 22:49:04,898 INFO c.e.d.SareetaApplication [main] No active profile set, falling back to default profiles: default
+2024-07-14 22:49:10,444 DEBUG c.e.d.s.JWTAuthenticationVerificationFilter [main] Filter 'JWTAuthenticationVerificationFilter' configured for use
+2024-07-14 22:49:11,112 INFO c.e.d.SareetaApplication [main] Started SareetaApplication in 6.858 seconds (JVM running for 8.468)
+2024-07-14 22:49:25,446 INFO c.e.d.c.UserController [http-nio-8082-exec-1] Request create user start.
+2024-07-14 22:49:25,621 INFO c.e.d.c.UserController [http-nio-8082-exec-1] Request create user end.
+2024-07-14 22:49:32,351 INFO c.e.d.c.UserController [http-nio-8082-exec-3] Request create user start.
+2024-07-14 22:49:32,429 INFO c.e.d.c.UserController [http-nio-8082-exec-3] Request create user end.
+2024-07-14 22:49:34,769 INFO c.e.d.c.UserController [http-nio-8082-exec-4] Request create user start.
+2024-07-14 22:49:34,878 INFO c.e.d.c.UserController [http-nio-8082-exec-4] Request create user end.
+2024-07-14 22:49:40,740 DEBUG c.e.d.s.JWTAuthenticationFilter [http-nio-8082-exec-5] Request is to process authentication
+2024-07-14 22:49:54,973 INFO c.e.d.c.UserController [http-nio-8082-exec-6] Request find user by username with test4
+2024-07-14 22:49:59,951 INFO c.e.d.c.UserController [http-nio-8082-exec-7] Request find user by username with test1
+2024-07-14 22:50:15,821 INFO c.e.d.c.UserController [http-nio-8082-exec-8] Request add to cart for test4 with 2 start.
+2024-07-14 22:50:15,853 INFO c.e.d.c.UserController [http-nio-8082-exec-8] Request add to cart for test4 with 2 end.
+2024-07-14 22:50:21,445 INFO c.e.d.c.UserController [http-nio-8082-exec-9] Request add to cart for test1 with 1 start.
+2024-07-14 22:50:21,455 INFO c.e.d.c.UserController [http-nio-8082-exec-9] Request add to cart for test1 with 1 end.
+2024-07-14 22:50:26,036 INFO c.e.d.c.UserController [http-nio-8082-exec-10] Request add to cart for test1 with 2 start.
+2024-07-14 22:50:26,046 INFO c.e.d.c.UserController [http-nio-8082-exec-10] Request add to cart for test1 with 2 end.
+2024-07-14 22:50:32,682 INFO c.e.d.c.UserController [http-nio-8082-exec-2] Request add to cart for test3 with 2 start.
+2024-07-14 22:50:32,685 ERROR c.e.d.c.UserController [http-nio-8082-exec-2] User not found with username is: test3
+2024-07-15 23:20:39,372 INFO c.e.d.c.UserController [main] Request remove to cart for testUser with 1 start.
+2024-07-15 23:20:39,420 INFO c.e.d.c.UserController [main] Request remove to cart for testUser with 1 end.
+2024-07-15 23:23:03,872 INFO c.e.d.c.UserController [main] Request add to cart for superman with 1 start.
+2024-07-15 23:23:03,893 INFO c.e.d.c.UserController [main] Request add to cart for superman with 1 end.
+2024-07-15 23:23:32,793 INFO c.e.d.c.UserController [main] Request add to cart for superman with 1 start.
+2024-07-15 23:23:32,813 INFO c.e.d.c.UserController [main] Request add to cart for superman with 1 end.
+2024-07-15 23:28:40,081 INFO c.e.d.c.UserController [main] Request add to cart for username_not_found with 0 start.
+2024-07-15 23:28:40,094 ERROR c.e.d.c.UserController [main] User not found with username is: username_not_found
+2024-07-15 23:28:40,124 INFO c.e.d.c.UserController [main] Request remove to cart for superman with 1 start.
+2024-07-15 23:28:40,126 INFO c.e.d.c.UserController [main] Request remove to cart for superman with 1 end.
+2024-07-15 23:28:40,150 INFO c.e.d.c.UserController [main] Request add to cart for superman with 1 start.
+2024-07-15 23:28:40,152 INFO c.e.d.c.UserController [main] Request add to cart for superman with 1 end.
+2024-07-15 23:29:06,991 INFO c.e.d.c.UserController [main] Request remove to cart for superman with 1 start.
+2024-07-15 23:29:07,003 INFO c.e.d.c.UserController [main] Request remove to cart for superman with 1 end.
+2024-07-15 23:30:27,424 INFO c.e.d.c.UserController [main] Request remove to cart for superman with 1 start.
+2024-07-15 23:30:27,439 INFO c.e.d.c.UserController [main] Request remove to cart for superman with 1 end.
+2024-07-15 23:31:22,698 INFO c.e.d.c.UserController [main] Request remove to cart for superman with 1 start.
+2024-07-15 23:31:22,715 INFO c.e.d.c.UserController [main] Request remove to cart for superman with 1 end.
+2024-07-15 23:48:11,591 INFO c.e.d.c.UserController [main] Request create order for user_not_found start.
+2024-07-15 23:48:11,605 ERROR c.e.d.c.UserController [main] User not found with username is: user_not_found
+2024-07-15 23:48:11,659 INFO c.e.d.c.UserController [main] Request create order for superman start.
+2024-07-15 23:48:11,680 INFO c.e.d.c.UserController [main] Request get history order for {0} start.testUser
+2024-07-15 23:48:11,681 INFO c.e.d.c.UserController [main] Request get history order for {0} end.testUser
+2024-07-15 23:48:11,686 INFO c.e.d.c.UserController [main] Request get history order for {0} start.userNotFound
+2024-07-15 23:48:11,686 ERROR c.e.d.c.UserController [main] User not found with username is: userNotFound
+2024-07-15 23:49:50,500 INFO c.e.d.c.UserController [main] Request create order for user_not_found start.
+2024-07-15 23:49:50,515 ERROR c.e.d.c.UserController [main] User not found with username is: user_not_found
+2024-07-15 23:49:50,565 INFO c.e.d.c.UserController [main] Request create order for superman start.
+2024-07-15 23:49:50,585 INFO c.e.d.c.UserController [main] Request get history order for {0} start.testUser
+2024-07-15 23:49:50,585 INFO c.e.d.c.UserController [main] Request get history order for {0} end.testUser
+2024-07-15 23:49:50,591 INFO c.e.d.c.UserController [main] Request get history order for {0} start.userNotFound
+2024-07-15 23:49:50,592 ERROR c.e.d.c.UserController [main] User not found with username is: userNotFound
+2024-07-15 23:50:50,829 INFO c.e.d.c.UserController [main] Request create order for user_not_found start.
+2024-07-15 23:50:50,843 ERROR c.e.d.c.UserController [main] User not found with username is: user_not_found
+2024-07-15 23:50:50,877 INFO c.e.d.c.UserController [main] Request create order for superman start.
+2024-07-15 23:50:50,877 INFO c.e.d.c.UserController [main] Request create order for superman end.
+2024-07-15 23:50:50,884 INFO c.e.d.c.UserController [main] Request get history order for {0} start.testUser
+2024-07-15 23:50:50,884 INFO c.e.d.c.UserController [main] Request get history order for {0} end.testUser
+2024-07-15 23:50:50,889 INFO c.e.d.c.UserController [main] Request get history order for {0} start.userNotFound
+2024-07-15 23:50:50,890 ERROR c.e.d.c.UserController [main] User not found with username is: userNotFound
+2024-07-15 23:55:01,520 INFO c.e.d.SareetaApplicationTests [main] Starting SareetaApplicationTests on DESKTOP-FT1E413 with PID 19628 (started by Admin in E:\udacity_java\nd035-c4-Security-and-DevOps\starter_code)
+2024-07-15 23:55:01,570 DEBUG c.e.d.SareetaApplicationTests [main] Running with Spring Boot v2.3.2.RELEASE, Spring v5.2.8.RELEASE
+2024-07-15 23:55:01,571 INFO c.e.d.SareetaApplicationTests [main] No active profile set, falling back to default profiles: default
+2024-07-15 23:55:08,610 INFO c.e.d.SareetaApplicationTests [main] Started SareetaApplicationTests in 7.806 seconds (JVM running for 9.897)
+2024-07-15 23:56:59,451 INFO c.e.d.SareetaApplicationTests [main] Starting SareetaApplicationTests on DESKTOP-FT1E413 with PID 22372 (started by Admin in E:\udacity_java\nd035-c4-Security-and-DevOps\starter_code)
+2024-07-15 23:56:59,475 DEBUG c.e.d.SareetaApplicationTests [main] Running with Spring Boot v2.3.2.RELEASE, Spring v5.2.8.RELEASE
+2024-07-15 23:56:59,476 INFO c.e.d.SareetaApplicationTests [main] No active profile set, falling back to default profiles: default
+2024-07-15 23:57:07,257 INFO c.e.d.SareetaApplicationTests [main] Started SareetaApplicationTests in 8.307 seconds (JVM running for 10.574)
+2024-07-15 23:57:13,195 INFO c.e.d.c.UserController [main] Request add to cart for username_not_found with 0 start.
+2024-07-15 23:57:13,207 ERROR c.e.d.c.UserController [main] User not found with username is: username_not_found
+2024-07-15 23:57:13,238 INFO c.e.d.c.UserController [main] Request remove to cart for superman with 1 start.
+2024-07-15 23:57:13,240 INFO c.e.d.c.UserController [main] Request remove to cart for superman with 1 end.
+2024-07-15 23:57:13,243 INFO c.e.d.c.UserController [main] Request add to cart for superman with 1 start.
+2024-07-15 23:57:13,245 INFO c.e.d.c.UserController [main] Request add to cart for superman with 1 end.
+2024-07-15 23:58:04,689 INFO c.e.d.c.UserController [main] Request create order for user_not_found start.
+2024-07-15 23:58:04,704 ERROR c.e.d.c.UserController [main] User not found with username is: user_not_found
+2024-07-15 23:58:04,747 INFO c.e.d.c.UserController [main] Request create order for superman start.
+2024-07-15 23:58:04,748 INFO c.e.d.c.UserController [main] Request create order for superman end.
+2024-07-15 23:58:04,759 INFO c.e.d.c.UserController [main] Request get history order for {0} start.testUser
+2024-07-15 23:58:04,759 INFO c.e.d.c.UserController [main] Request get history order for {0} end.testUser
+2024-07-15 23:58:04,765 INFO c.e.d.c.UserController [main] Request get history order for {0} start.userNotFound
+2024-07-15 23:58:04,766 ERROR c.e.d.c.UserController [main] User not found with username is: userNotFound
+2024-07-15 23:58:13,003 INFO c.e.d.c.UserController [main] Request find user by username with testUser
+2024-07-15 23:58:13,047 INFO c.e.d.c.UserController [main] Request create user start.
+2024-07-15 23:58:13,048 INFO c.e.d.c.UserController [main] Request create user end.
+2024-07-15 23:58:13,057 INFO c.e.d.c.UserController [main] Request find user by id with 1
+2024-07-15 23:58:13,061 INFO c.e.d.c.UserController [main] Request create user start.
+2024-07-15 23:58:13,061 ERROR c.e.d.c.UserController [main] Error with user password. Cannot create user user
+2024-07-15 23:58:13,081 INFO c.e.d.c.UserController [main] Request find user by id with 999
+2024-07-15 23:58:13,086 INFO c.e.d.c.UserController [main] Request find user by username with userNotExist
+2024-07-15 23:58:44,110 INFO c.e.d.c.UserController [main] Request create user start.
+2024-07-15 23:58:44,132 ERROR c.e.d.c.UserController [main] Error with user password. Cannot create user newUser
+2024-07-15 23:59:13,557 INFO c.e.d.c.UserController [main] Request create user start.
+2024-07-15 23:59:13,588 ERROR c.e.d.c.UserController [main] Error with user password. Cannot create user newUser
+2024-07-15 23:59:24,978 INFO c.e.d.c.UserController [main] Request find user by username with testUser
+2024-07-15 23:59:25,049 INFO c.e.d.c.UserController [main] Request create user start.
+2024-07-15 23:59:25,051 INFO c.e.d.c.UserController [main] Request create user end.
+2024-07-15 23:59:25,068 INFO c.e.d.c.UserController [main] Request find user by id with 1
+2024-07-15 23:59:25,075 INFO c.e.d.c.UserController [main] Request create user start.
+2024-07-15 23:59:25,076 ERROR c.e.d.c.UserController [main] Error with user password. Cannot create user newUser
+2024-07-15 23:59:25,085 INFO c.e.d.c.UserController [main] Request find user by id with 999
+2024-07-15 23:59:25,092 INFO c.e.d.c.UserController [main] Request find user by username with userNotExist
