@@ -1,0 +1,48 @@
+2023-11-12 22:26:37,156 INFO c.e.d.c.CartControllerTest [main] Starting CartControllerTest on DESKTOP-H1TBCKT with PID 16284 (started by Admin in D:\THACH_NGUYEN\JAVA_WEB\Project_4\Security-and-DevOps\starter_code)
+2023-11-12 22:26:37,362 DEBUG c.e.d.c.CartControllerTest [main] Running with Spring Boot v2.3.2.RELEASE, Spring v5.2.8.RELEASE
+2023-11-12 22:26:37,364 INFO c.e.d.c.CartControllerTest [main] No active profile set, falling back to default profiles: default
+2023-11-12 22:27:34,036 DEBUG c.e.d.c.ItemController [main] ItemRepository Injection.
+2023-11-12 22:27:34,227 DEBUG c.e.d.c.OrderController [main] OrderController Injection.
+2023-11-12 22:27:34,283 DEBUG c.e.d.c.UserController [main] UserController Injection.
+2023-11-12 22:27:46,413 INFO c.e.d.c.CartControllerTest [main] Started CartControllerTest in 75.337 seconds (JVM running for 103.998)
+2023-11-12 22:27:49,839 INFO c.e.d.c.CartController [main] Add To Cart Start with UserName NguyenT4  Item ID: 1
+2023-11-12 22:27:49,874 ERROR c.e.d.c.CartController [main] User Not Found With UserName: NguyenT4
+2023-11-12 22:27:50,027 INFO c.e.d.c.CartController [main] Remove Item From Cart Start with UserName NguyenT4  Item ID 1
+2023-11-12 22:27:50,061 ERROR c.e.d.c.CartController [main] Item Not Found With Item ID: 1
+2023-11-12 22:27:50,152 INFO c.e.d.c.CartController [main] Add To Cart Start with UserName NguyenT4  Item ID: 1
+2023-11-12 22:27:50,154 ERROR c.e.d.c.CartController [main] Item Not Found With Item ID: 1
+2023-11-12 22:27:50,178 INFO c.e.d.c.CartController [main] Add To Cart Start with UserName NguyenT4  Item ID: 1
+2023-11-12 22:27:50,232 INFO c.e.d.c.CartController [main] Add To Cart End With UserName NguyenT4 Item ID 1
+2023-11-12 22:27:50,254 INFO c.e.d.c.CartController [main] Remove Item From Cart Start with UserName NguyenT4  Item ID 1
+2023-11-12 22:27:50,255 ERROR c.e.d.c.CartController [main] User Not Found With UserName: NguyenT4
+2023-11-12 22:27:50,270 INFO c.e.d.c.CartController [main] Remove Item From Cart Start with UserName NguyenT4  Item ID 1
+2023-11-12 22:27:50,289 INFO c.e.d.c.CartController [main] Remove Item From Cart End with UserName NguyenT4  Item ID 1
+2023-11-12 22:27:50,310 DEBUG c.e.d.c.ItemController [main] ItemRepository Injection.
+2023-11-12 22:27:50,358 DEBUG c.e.d.c.ItemController [main] ItemRepository Injection.
+2023-11-12 22:27:50,393 DEBUG c.e.d.c.ItemController [main] ItemRepository Injection.
+2023-11-12 22:27:50,425 DEBUG c.e.d.c.ItemController [main] ItemRepository Injection.
+2023-11-12 22:27:50,545 DEBUG c.e.d.c.ItemController [main] ItemRepository Injection.
+2023-11-12 22:27:50,790 DEBUG c.e.d.c.OrderController [main] OrderController Injection.
+2023-11-12 22:27:50,821 INFO c.e.d.c.OrderController [main] Submit Start: NguyenT4
+2023-11-12 22:27:50,823 ERROR c.e.d.c.OrderController [main] User Not Found With UserName: NguyenT4
+2023-11-12 22:27:50,830 DEBUG c.e.d.c.OrderController [main] OrderController Injection.
+2023-11-12 22:27:50,839 INFO c.e.d.c.OrderController [main] Get Orders For User Start: NguyenT4
+2023-11-12 22:27:50,840 ERROR c.e.d.c.OrderController [main] User Not Found With UserName: NguyenT4
+2023-11-12 22:27:50,851 DEBUG c.e.d.c.OrderController [main] OrderController Injection.
+2023-11-12 22:27:50,856 INFO c.e.d.c.OrderController [main] Submit Start: NguyenT4
+2023-11-12 22:27:50,887 INFO c.e.d.c.OrderController [main] Submit End: NguyenT4
+2023-11-12 22:27:50,903 DEBUG c.e.d.c.OrderController [main] OrderController Injection.
+2023-11-12 22:27:50,919 INFO c.e.d.c.OrderController [main] Get Orders For User Start: NguyenT4
+2023-11-12 22:27:50,920 INFO c.e.d.c.OrderController [main] Get Orders For User End: NguyenT4
+2023-11-12 22:27:51,140 DEBUG c.e.d.c.UserController [main] UserController Injection.
+2023-11-12 22:27:51,211 INFO c.e.d.c.UserController [main] Find By User Name Start with username: NguyenT4
+2023-11-12 22:27:51,224 DEBUG c.e.d.c.UserController [main] UserController Injection.
+2023-11-12 22:27:51,243 INFO c.e.d.c.UserController [main] Find By Id Start with id: 1
+2023-11-12 22:27:51,254 DEBUG c.e.d.c.UserController [main] UserController Injection.
+2023-11-12 22:27:51,261 INFO c.e.d.c.UserController [main] Find By User Name Start with username: NguyenT4
+2023-11-12 22:27:51,287 DEBUG c.e.d.c.UserController [main] UserController Injection.
+2023-11-12 22:27:51,304 INFO c.e.d.c.UserController [main] Create User Start.
+2023-11-12 22:27:51,307 INFO c.e.d.c.UserController [main] Create User End.
+2023-11-12 22:27:51,324 DEBUG c.e.d.c.UserController [main] UserController Injection.
+2023-11-12 22:27:51,329 INFO c.e.d.c.UserController [main] Create User Start.
+2023-11-12 22:27:51,407 ERROR c.e.d.c.UserController [main] Error - Either length is less than 7 or pass and conf pass do not match. Unable to create NguyenT4
